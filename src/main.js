@@ -25,12 +25,22 @@ Vue.use(Pagination);
 Vue.prototype.$MessageBox = MessageBox
 Vue.prototype.$message = Message;
 Vue.prototype.$alert = MessageBox.alert;
+
+
 // 全局插件引入
 // *vue-awesome-swiper依赖于swiper，所以不用引入swiper
 import VueAwesomeSwiper from "vue-awesome-swiper";
 import "swiper/css/swiper.css";
+import VueLazyload from 'vue-lazyload'
 // 插件安装
+// 引入懒加载图片
+import loading from '@/assets/images/giphy.gif'
 Vue.use(VueAwesomeSwiper);
+Vue.use(VueLazyload, {
+  // preLoad: 1.3,
+  // error: 'dist/error.png',
+  loading: loading,
+})
 
 // *引入 mockSercer.js 并执行一次
 import "@/mock/mockServer";
