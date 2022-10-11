@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 网络图片识别/js
+      function imgcode() {
+        if ($("#uri").val() == "") {
+          alert("网址不能为空");
+          return;
+        }
+        $.ajax({
+          type: "post",
+          url: "http://www.bhshare.cn/imgcode/",
+          data: {
+            token: $("#token").val(),
+            uri: $("#uri").val(),
+            type: "online",
+          },
+          dataType: "json",
+          success: function (data) {
+            console.log(data);
+            if (data.code > 0) {
+              $("#resultCode").text(data.data);
+            } else {
+              $("#resultCode").text(data.msg);
+            }
+          },
+          error: function (result) {
+            console.log(result);
+            $("#resultCode").text(JSON.stringify(result));
+            alert("系统繁忙,请稍后再试！");
+          },
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <!--网络图片识别/html-->
+    <input type="text" name="uri" id="uri" placeholder="请输入验证码图片网址" />
+    <input type="button" onclick="imgcode()" value="识别" />
+    <input name="token" id="token" value="free" type="hidden" />
+    <input name="type" value="online" type="hidden" />
+    <p>识别结果：<span id="resultCode" style="color: red">请稍后...</span></p>
+  </body>
+</html>

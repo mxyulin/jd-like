@@ -1,28 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header />
+    <router-view></router-view>
+    <!-- 利用路由 meta 属性决定组件得隐藏 -->
+    <Footer v-show="$route.meta.showFooter" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+// 引入全局组件动画库
+import "animate.css";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Header,
+    Footer,
+  },
+  // *放这里的原因：仅请求一次数据
+  mounted() {
+    // 获取商品列表
+    this.$store.dispatch("Home/getCategoryList");
+    // 获取用户信息，写这里的原因是，页面一刷新导致用户信息数据被清空，所以得重新请求用户信息数据
+    this.$store.dispatch("User/getUserInfo")
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scope>
 </style>

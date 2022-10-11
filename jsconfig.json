@@ -1,0 +1,16 @@
+{
+  // *配置 src/ 的别名
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  },
+  // !别名设置排除的目录，以下两个文件夹别名无效
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
