@@ -33,14 +33,16 @@ export default {
     async getUserInfo({commit}) {
       let result = await reqUserInfo();
       if (result.code == 200) {
-        commit('GETUSERINFO', result.data)
+        commit('GETUSERINFO', result.data);
+        return result
       }
+      return Promise.reject(new Error('faile'))
     },
     // 退出登录
     async userLogout({commit}) {
      let result = await reqLogout();
      if (result.code == 200) {
-      localStorage.removeItem('sph_token');
+      localStorage.sph_token = '';
       commit('CLEARUSERINFO')
       return 'ok';
      }

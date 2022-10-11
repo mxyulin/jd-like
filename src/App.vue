@@ -23,8 +23,8 @@ export default {
   mounted() {
     // 获取商品列表
     this.$store.dispatch("Home/getCategoryList");
-    // 获取用户信息，写这里的原因是，页面一刷新导致用户信息数据被清空，所以得重新请求用户信息数据
-    this.$store.dispatch("User/getUserInfo")
+    // (弃用)获取用户信息，写这里的原因是，页面一刷新导致用户信息数据被清空，所以得重新请求用户信息数据
+    // this.$store.dispatch("User/getUserInfo")
   },
 };
 </script>

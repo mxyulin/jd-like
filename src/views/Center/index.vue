@@ -63,6 +63,15 @@
 <script>
   export default {
     name: 'Center',
+    data() {
+      return {
+        myOrderList: []
+      }
+    },
+    mounted() {
+      // 跳转个人中心时拿订单数据
+      this.$store.dispatch('Center/getMyOrderList', {page: 1, limit: 3});
+    }
   }
 </script>
 

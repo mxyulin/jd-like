@@ -10,17 +10,18 @@ import router from "@/router";
 // 全局组件引入
 import TypeNav from "@/components/TypeNav";
 import Carousel from "@/components/Carousel";
-import Pagination from "@/components/Pagination";
+
 // *全局组件注册
 Vue.component(TypeNav.name, TypeNav);
 Vue.component(Carousel.name, Carousel);
-Vue.component(Pagination.name, Pagination);
 
 // *饿了么-ui
-import { MessageBox, Button, Message } from "element-ui";
+import { MessageBox, Button, Message, Pagination } from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 // 两种引入方式
-Vue.component(Button.name, Button);
+// Vue.component(Button.name, Button);
+Vue.use(Button);
+Vue.use(Pagination);
 Vue.prototype.$MessageBox = MessageBox
 Vue.prototype.$message = Message;
 Vue.prototype.$alert = MessageBox.alert;
@@ -38,7 +39,7 @@ import "@/plugins/validate";
 // 引入所有 API
 import * as API from "@/api";
 
-new Vue({
+export default new Vue({
   render: (h) => h(App),
   router,
   store,

@@ -8,6 +8,7 @@ import Detail from "@/store/Detail";
 import User from "@/store/User";
 import ShopCart from "@/store/ShopCart";
 import Trade from "@/store/Trade";
+import Center from "@/store/Center";
 
 vue.use(Vuex);
 
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     Detail,
     User,
     ShopCart,
-    Trade
+    Trade,
+    Center
   },
 });

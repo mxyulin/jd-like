@@ -1,5 +1,5 @@
 import { reqGoodsDetail, addToCart } from "@/api";
-import { getUUID } from '@/utils/uuid_token';
+// import { getUUID } from '@/utils/uuid_token'; 弃用
 
 export default {
   namespaced: true,
@@ -9,7 +9,9 @@ export default {
       let result = await reqGoodsDetail(skuId);
       if (result.code == 200) {
         commit("GETGOODSDETAIL", result.data);
+        return result;
       }
+      return Promise.reject(new Error('faile'))
     },
     // 此商品加入购物车，失败需要提醒用户
     async addToCart(_, { skuId, skuNum }) {
@@ -42,8 +44,8 @@ export default {
   },
   state: {
     goodsDetail: {},
-    // *拿到或新生成一个游客身份的临时id
-    uuid_token: getUUID(),
+    // 拿到或新生成一个游客身份的临时id 弃用
+    // uuid_token: getUUID(),
   },
   getters: {
     categoryView({ goodsDetail: { categoryView } }) {

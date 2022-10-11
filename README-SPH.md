@@ -388,6 +388,55 @@
 
   - 用到的正则：手机号`/^1\d{10}$/`、密码`/^[0-9A-Za-z]{8,20}$/`、
 
+### 登录业务逻辑核心---全局路由守卫判定登录与否后的一系列操作
+
+  ```js
+  // *前置全局守卫（登录业务逻辑核心）
+  router.beforeEach( (to, from, next) => {
+    // *判断登录页以外的其他路由
+    // 如果登录
+    if (localStorage.getItem('sph_token')) {
+      // 就可以跳转到除了登录页的所有页面
+      // *别忘了发请求，拿用户数据（之前我写在app/home组件的作废，
+      // *原因之前的逻辑，退出登陆后（token清空）登录home都页（会请求用户数据）进不去）
+      store.dispatch('User/getUserInfo')
+      .then(res => {
+        // 成功获取到用户数据
+        if (res.code == 200) {
+          // 放行
+        return next();
+        }
+        // 获取用户数据失败，提醒用户
+        return vm.$message({
+          message: '获取用户数据失败',
+          type: 'error'
+        })
+      })
+      .catch(err => console.log(err))
+    }
+    // *如果没登录，用户个人数据的页面无法跳转
+    else {
+      // 想去哪儿
+      let wantToGo = to.path;
+      // *包含这些 关键词 的禁地不能去
+      let arr = ['trade', 'pay', 'center', 'shopcart']
+      // *只要想去禁地，没门儿！
+      if (arr.some(noWay => wantToGo.indexOf(noWay) != -1)) {
+        // 提醒登录
+        vm.$message({
+          message: '用户未登录',
+          type: 'error'
+        })
+        // *滚回去登录，成功后会重定向之前想去的地儿
+        next(`/login?redirect=${wantToGo}`)
+      } else {
+        // *没去禁地放行
+        next()
+      }
+    }
+  })
+  ```
+
 ### 支付模块开发（重点）
 
 - [element-UI]按需引入：
@@ -434,7 +483,7 @@
 - [经验之谈]搜索历史放`locoStorage`中最佳。
 - [减少代码]如果不通过`vuex`发请求，那么可以通过全局。
 - [心得体会]`promise`是非常棒的异步处理技术，尤其是对API请求操作来说，简直就是福音。只需简单的链式调用就可以完成多个关联异步操作，并且一旦某个环节失败就立马被`catch`捕获，进入失败处理程序。
-- [心得体会]数据少，请求少的页面不建议用仓库。
+- [经验之谈]每个路由都有同的样验证行为，那么就可以将该验证行为写到**全局前置路由守卫**中。
 
 ## 项目遇到的坑
 

@@ -36,8 +36,8 @@ export default {
   mounted() {
     // 获取三级分类列表
     this.$store.dispatch("Home/getFloorList");
-    // 写这里是便于登录成功,跳转此页面的时候获取用户信息
-    this.$store.dispatch("User/getUserInfo");
+    // （弃用）退出登陆后（token清空）登录home都页（会请求用户数据）进不去
+    // this.$store.dispatch("User/getUserInfo");
   },
 }
 </script>

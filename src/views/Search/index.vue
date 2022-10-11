@@ -212,11 +212,13 @@
 <script>
 import SearchSelector from "@/views/Search/SearchSelector";
 import { mapGetters } from "vuex";
+import Pagination from "@/components/Pagination";
 
 export default {
   name: "Search",
   components: {
     SearchSelector,
+    Pagination
   },
   data() {
     return {

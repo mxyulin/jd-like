@@ -147,7 +147,7 @@ requests({
   url: `/payment/weixin/queryPayStatus/${orderId}`,
 });
 
-// 获取订单列表
+// 获取我的订单列表
 export const reqOrderList = ( page, limit ) =>
   requests({
     method: "get",

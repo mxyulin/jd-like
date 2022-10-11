@@ -125,7 +125,7 @@ export default {
             );
             // *存储返回的状态码，判定用户支付是否完成。
             this.payCode = result.code;
-            if (result.code == 201) {
+            if (result.code == 200) {
             // *支付成功清除定时器
             clearInterval(this.timer);
             // *付成功关闭弹窗

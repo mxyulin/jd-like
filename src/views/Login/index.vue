@@ -80,7 +80,6 @@
 </template>
 
 <script>
-
 export default {
   name: "Login",
   data() {
@@ -95,16 +94,24 @@ export default {
       const { phone, password } = this;
       // 连续逻辑与判断执行
       this.phone &&
-      this.password &&
-      this.$store
-      .dispatch("User/userLogin", { phone, password })
-      .then(() =>
-        // 登录成功路由跳转
-        this.$router.replace({
-          path: "/home",
-        })
-      )
-      .catch((err) => console.log(err.message));
+        this.password &&
+        this.$store
+          .dispatch("User/userLogin", { phone, password })
+          .then(() =>
+            // *登录成功路由跳转，联动全局路由守卫（重定向功能）
+            {
+              // *如果有重定向 query 就重定向跳转
+              this.$route.query.redirect
+                ? this.$router.replace({
+                    path: `${this.$route.query.redirect}`,
+                  })
+                : // 没有就跳首页
+                  this.$router.replace({
+                    path: "/home",
+                  });
+            }
+          )
+          .catch((err) => console.log(err.message));
     },
   },
 };

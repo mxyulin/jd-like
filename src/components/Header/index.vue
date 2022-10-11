@@ -18,7 +18,7 @@
         </div>
         <!-- 头部右侧 -->
         <div class="typeList">
-          <a>我的订单</a>
+          <router-link to="/center/myorder">我的订单</router-link>
           <router-link to="/shopcart">我的购物车</router-link>
           <a>我的闪购</a>
           <!-- <a >闪购会员</a>
