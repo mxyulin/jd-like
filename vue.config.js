@@ -1,6 +1,8 @@
 module.exports = {
-  // 关闭 eslint
+  // *关闭 eslint
   lintOnSave: false,
+  // *关闭打包生成 .mp 文件
+  productionSourceMap: false,
   pages: {
     index: {
       entry: "src/main.js",
