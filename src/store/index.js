@@ -2,13 +2,13 @@ import vue from "vue";
 import Vuex from "vuex";
 
 // 引入vuex组件模块
-import Home from "@/store/Home";
-import Search from "@/store/Search";
-import Detail from "@/store/Detail";
-import User from "@/store/User";
-import ShopCart from "@/store/ShopCart";
-import Trade from "@/store/Trade";
-import Center from "@/store/Center";
+import Home from "@/store/modules/Home";
+import Search from "@/store/modules/Search";
+import Detail from "@/store/modules/Detail";
+import User from "@/store/modules/User";
+import ShopCart from "@/store/modules/ShopCart";
+import Trade from "@/store/modules/Trade";
+import Center from "@/store/modules/Center";
 
 vue.use(Vuex);
 
