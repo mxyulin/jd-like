@@ -57,4 +57,7 @@ export default new Vue({
       // 全局 API 总线
       (Vue.prototype.$API = API);
   },
+  mounted() {
+    console.log(this)
+  }
 }).$mount("#app");
