@@ -3,7 +3,7 @@ import Vue from "vue";
 import App from "./App.vue";
 Vue.config.productionTip = false;
 
-// vue工具引入
+// vue工具库引入
 import store from "@/store";
 import router from "@/router";
 

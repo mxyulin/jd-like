@@ -11,7 +11,6 @@ Vue.use(VueRouter);
 // * push函数本身还需要 resolve, reject 的回调作为另外两个参数，没有就会报错，所以二次封装
 // 重写前备份原型上的 push
 const oringinPush = VueRouter.prototype.push;
-// 
 // *重写 push，第一个参数是目标路由的路径
 VueRouter.prototype.push = function(location, resolve, reject){
   // push被调用的上下文是组件实例
