@@ -1,16 +1,13 @@
 {
-  // *配置 src/ 的别名
+  // *配置编译器
   "compilerOptions": {
+    // *编译器开始工作的基本路径
     "baseUrl": "./",
+    // *配置 src/ 的别名
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     }
   },
-  // !别名设置排除的目录，以下两个文件夹别名无效
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  // *设置排除的目录，告诉语法检查器哪些目录无需语法校验。
+  "exclude": ["node_modules", "dist"]
 }

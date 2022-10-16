@@ -37,7 +37,7 @@
         </router-link>
       </h1>
       <div class="searchArea">
-        <form action="###" class="searchForm">
+        <form class="searchForm">
           <input
             type="text"
             id="autocomplete"

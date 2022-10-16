@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 // 引入全局组件动画库
 import "animate.css";
 
