@@ -10,7 +10,6 @@ import router from "@/router";
 // 全局组件引入
 import TypeNav from "@/components/TypeNav";
 import Carousel from "@/components/Carousel";
-
 // *全局组件注册
 Vue.component(TypeNav.name, TypeNav);
 Vue.component(Carousel.name, Carousel);
