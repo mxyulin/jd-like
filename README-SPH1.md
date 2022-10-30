@@ -1,8 +1,8 @@
-# SPH---项目开发前的准备
+# SPH项目开发前的准备
 
-## 搭建脚手架
+## 搭建脚手架vue-cli
 
-1. 准备node + cnpm(有梯子无需国内cdn) + webpack(vue-cli)的开发环境。
+1. 准备 node + cnpm(有梯子无需国内cdn) + webpack(vue-cli) 的开发环境。
     1. vue-cli2及以下版本: `npm install vue-cli`
     2. vue-cli3/cli4及以上版本: `npm install -g @vue/cli@4.5.13`(4.5.13版本完美支持vue2.x)
 2. 初始化项目
@@ -23,11 +23,11 @@
   - [components]一般放置**非路由组件**和**全局组件**。
   - [mock](数据来源的文件夹)模拟一些假的数据由`mockjs`实现的。但实际开发的时候，利用的是真实接口数据。所以该文件夹仅用于**测试项目**。
   - [icons]放置`svg`矢量图等格式的**图标**。
-  - [layout]放置一些**组件与混入**，混入写的`ResizeHandler.js`大概写的是根据设备响应式调整页面大小。组件部分都是
+  - [layout]放置一些**组件与混入**，混入写的`ResizeHandler.js`大概写的是根据设备响应式调整页面大小。组件部分都是。
   - [router]配置**路由**。
   - [store]**vuex**业务逻辑与响应式数据的管理，其中`getters.js`不参与模块化得原因是：`getters`配置项是在其他所有模块中起相同作用，可以理解为**公共模块**，所以单独拿出来。
-  - [style]与**样式**先关的文件。
-  - [utils]共享工具脚本库
+  - [style]与**样式**相关的文件。
+  - [utils]共享工具脚本库。
   - [views]放置的是**路由组件**，也可以命名为`pages`，但建议`views`。
   - App.vue: 项目根组件。
   - main.js: 项目入口文件，程序最先执行的文件。
@@ -40,7 +40,7 @@
 ## 项目初始化配置(https://cli.vuejs.org/zh/config/)
 
 - 根目录创建`vue.config.js`文件
-  - [jsconfig.json](https://juejin.cn/post/6930549887402672135)目录中存在文件表明该目录是 JavaScript 项目的**根目录**。该jsconfig.json文件指定了JavaScript 语言服务**提供的的根文件和选项**。说通俗一点就是改善 JavaScript 开发体验的一个配置文件。
+  - [jsconfig.json](https://juejin.cn/post/6930549887402672135)目录中存在文件表明该目录是 JavaScript 项目的**根目录**。该jsconfig.json文件指定了 JavaScript 语言服务**提供的的根文件和选项**。说通俗一点就是改善 JavaScript 开发体验的一个配置文件。
   - 配置`lintOnSave: false`(是否在开发环境下通过`eslint-loader`在每次保存时`lint`代码。)可关闭语**严格语法校验**。
   - 配置`devServer`开发环境用到的代理服务（为了用上接口，同域无需设置）。
 - 根目录创建`jsconfig.json`文件，配置`src/`路径的别名`@/*`（详情参见`jsconfig.json`文件）。
